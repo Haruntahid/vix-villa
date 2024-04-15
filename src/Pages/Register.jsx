@@ -4,8 +4,9 @@ import { AuthContext } from "../Provider/AuthProvider";
 // import { getAuth } from "firebase/auth";
 
 function Register() {
-  const { registerUser } = useContext(AuthContext);
+  const { registerUser, setUser } = useContext(AuthContext);
   //   const [validPass, setValidPass] = useState();
+  const [error, setError] = useState("");
 
   const handelRegister = (e) => {
     e.preventDefault();
@@ -15,19 +16,33 @@ function Register() {
     const photo = e.target.photo.value;
     const password = e.target.password.value;
 
-    if (password.length >= 6) {
-      console.log("password is more than 6 character");
+    // password validation
+    if (password.length < 6) {
+      setError("password must be 6 characters");
+      return;
     }
-    // console.log(name, email, photo, password);
+    if (!/^(?=.*[A-Z]).+$/.test(password)) {
+      setError("Password must contain at least one uppercase");
+      return;
+    }
+    if (!/^(?=.*[a-z]).+$/.test(password)) {
+      setError("Password must contain at least one lowercase");
+      return;
+    }
+
+    setError("");
+    // register a user
     registerUser(email, password)
-      .then((result) => console.log(result.user))
-      .then((err) => console.log(err));
+      .then((result) => setUser(result.user))
+      .catch((err) =>
+        setError(
+          err.message.replace(
+            "Firebase: Error (auth/email-already-in-use).",
+            "Email Aleready Exist!"
+          )
+        )
+      );
   };
-
-  //   const auth = getAuth();
-  //   const user = auth.currentUser;
-
-  //   console.log(user);
 
   return (
     <>
@@ -81,6 +96,7 @@ function Register() {
                 className="input input-bordered"
                 required
               />
+              {error && <span className="text-rose-600 mt-4">{error}</span>}
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Register</button>

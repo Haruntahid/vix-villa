@@ -26,13 +26,9 @@ function AuthProvider({ children }) {
   };
 
   //   logout user
-  const logOut = signOut(auth)
-    .then(() => {
-      console.log("sign out successfull");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  const logOut = () => {
+    return signOut(auth);
+  };
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -44,6 +40,7 @@ function AuthProvider({ children }) {
 
   const authInfo = {
     user,
+    setUser,
     registerUser,
     loginUser,
     logOut,
