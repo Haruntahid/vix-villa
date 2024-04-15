@@ -1,0 +1,136 @@
+{
+  "estates": [
+    {
+      "id": 1,
+      "estate_title": "Oceanfront Penthouse Paradise",
+      "segment_name": "Penthouse",
+      "description": "Exquisite penthouse offering breathtaking ocean views and luxurious amenities.",
+      "price": "$5,000,000",
+      "status": "sale",
+      "area": "5000 sq ft",
+      "location": "Miami Beach, Florida",
+      "facilities": [
+        "private rooftop pool",
+        "concierge service",
+        "state-of-the-art gym"
+      ],
+      "image_url": "path/to/image1.jpg"
+    },
+    {
+      "id": 2,
+      "estate_title": "Luxury Beachfront Villa",
+      "segment_name": "Beachfront properties",
+      "description": "Elegant villa steps away from the pristine sandy beaches, perfect for relaxation.",
+      "price": "$7,500,000",
+      "status": "sale",
+      "area": "6000 sq ft",
+      "location": "Maui, Hawaii",
+      "facilities": [
+        "infinity pool",
+        "private beach access",
+        "poolside cabanas"
+      ],
+      "image_url": "path/to/image2.jpg"
+    },
+    {
+      "id": 3,
+      "estate_title": "Tropical Resort Retreat",
+      "segment_name": "Resorts",
+      "description": "Exclusive resort offering luxurious accommodations and world-class amenities.",
+      "price": "$10,000,000",
+      "status": "sale",
+      "area": "10 acres",
+      "location": "Maldives",
+      "facilities": [
+        "private villas",
+        "beachfront dining",
+        "spa and wellness center"
+      ],
+      "image_url": "path/to/image3.jpg"
+    },
+    {
+      "id": 4,
+      "estate_title": "Private Island Paradise",
+      "segment_name": "Private islands",
+      "description": "Secluded island retreat with pristine beaches and lush tropical landscapes.",
+      "price": "$20,000,000",
+      "status": "sale",
+      "area": "20 acres",
+      "location": "Caribbean",
+      "facilities": [
+        "private airstrip",
+        "luxury villas",
+        "water sports facilities"
+      ],
+      "image_url": "path/to/image4.jpg"
+    },
+    {
+      "id": 5,
+      "estate_title": "Mediterranean Luxury Villa",
+      "segment_name": "Villas",
+      "description": "Magnificent villa with panoramic views of the Mediterranean Sea and lavish interiors.",
+      "price": "$8,000,000",
+      "status": "sale",
+      "area": "8000 sq ft",
+      "location": "Côte d'Azur, France",
+      "facilities": ["infinity-edge pool", "tennis court", "home theater"],
+      "image_url": "path/to/image5.jpg"
+    },
+    {
+      "id": 6,
+      "estate_title": "Grand Mansion Estate",
+      "segment_name": "Mansions",
+      "description": "Opulent mansion set on sprawling grounds, epitomizing luxury and sophistication.",
+      "price": "$15,000,000",
+      "status": "sale",
+      "area": "15,000 sq ft",
+      "location": "Beverly Hills, California",
+      "facilities": ["ballroom", "wine cellar", "guest house"],
+      "image_url": "path/to/image6.jpg"
+    },
+    {
+      "id": 7,
+      "estate_title": "Seaside Luxury Retreat",
+      "segment_name": "Beachfront properties",
+      "description": "Stunning beachfront property with modern design and panoramic ocean views.",
+      "price": "$12,000,000",
+      "status": "sale",
+      "area": "7000 sq ft",
+      "location": "Sydney, Australia",
+      "facilities": [
+        "infinity-edge pool",
+        "private beach access",
+        "outdoor entertainment area"
+      ],
+      "image_url": "path/to/image7.jpg"
+    },
+    {
+      "id": 8,
+      "estate_title": "Exclusive Mountain Resort",
+      "segment_name": "Resorts",
+      "description": "Luxury resort nestled in the mountains, offering unparalleled views and tranquility.",
+      "price": "$9,500,000",
+      "status": "sale",
+      "area": "25 acres",
+      "location": "Aspen, Colorado",
+      "facilities": [
+        "ski-in/ski-out access",
+        "spa and wellness center",
+        "gourmet dining"
+      ],
+      "image_url": "path/to/image8.jpg"
+    },
+    {
+      "id": 9,
+      "estate_title": "Private Island Oasis",
+      "segment_name": "Private islands",
+      "description": "Exclusive private island retreat with pristine beaches and lush tropical vegetation.",
+      "price": "$30,000,000",
+      "status": "sale",
+      "area": "30 acres",
+      "location": "Fiji",
+      "facilities": ["luxury villas", "helipad", "marine conservation area"],
+      "image_url": "path/to/image9.jpg"
+    }
+  ]
+}

@@ -1,12 +1,23 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
-// import { getAuth } from "firebase/auth";
+import { FaRegEye } from "react-icons/fa6";
+import { FaRegEyeSlash } from "react-icons/fa6";
 
 function Register() {
   const { registerUser, setUser } = useContext(AuthContext);
   //   const [validPass, setValidPass] = useState();
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState("");
+
+  const handelToogle = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleChange = (e) => {
+    setPassword(e.target.value);
+  };
 
   const handelRegister = (e) => {
     e.preventDefault();
@@ -85,19 +96,34 @@ function Register() {
                 required
               />
             </div>
-            <div className="form-control">
+            <div className="form-control relative">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
+                value={password}
                 placeholder="password"
                 className="input input-bordered"
                 required
+                onChange={handleChange}
               />
-              {error && <span className="text-rose-600 mt-4">{error}</span>}
             </div>
+            {password && (
+              <span
+                className="absolute top-[60%] right-4 "
+                onClick={handelToogle}
+              >
+                {showPassword ? (
+                  <FaRegEye size={20} />
+                ) : (
+                  <FaRegEyeSlash size={20} />
+                )}
+              </span>
+            )}
+
+            {error && <span className="text-rose-600 mt-4">{error}</span>}
             <div className="form-control mt-6">
               <button className="btn btn-primary">Register</button>
             </div>

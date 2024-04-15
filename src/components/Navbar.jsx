@@ -1,6 +1,14 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 function Navbar() {
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
+
+  const handelLogout = () => {
+    logOut();
+  };
   return (
     <>
       <div className="navbar bg-base-100 my-10">
@@ -50,17 +58,41 @@ function Navbar() {
             <li>
               <NavLink to={"/register"}>Register</NavLink>
             </li>
-
-            {/* <li>
-              <NavLink to={"/login"}>Login</NavLink>
-            </li> */}
+            {user && (
+              <li>
+                <NavLink to={"/profile"}>Profile</NavLink>
+              </li>
+            )}
           </ul>
         </div>
-        <div className="navbar-end">
-          <Link to={"/login"} className="btn">
-            Login
-          </Link>
-        </div>
+
+        {user ? (
+          <div className="navbar-end">
+            <div>
+              <div className="mr-5">
+                <div
+                  className="tooltip tooltip-bottom"
+                  data-tip={user.displayName}
+                >
+                  <img
+                    className="w-14 h-14 rounded-full"
+                    src={user.photoURL}
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+            <Link onClick={handelLogout} className="btn">
+              Logout
+            </Link>
+          </div>
+        ) : (
+          <div className="navbar-end">
+            <Link to={"/login"} className="btn">
+              Login
+            </Link>
+          </div>
+        )}
       </div>
     </>
   );

@@ -3,13 +3,19 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 function Login() {
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, googleLogin, setUser } = useContext(AuthContext);
 
+  //   login
   const handelLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     loginUser(email, password);
+  };
+
+  //   google login
+  const handelGoogleLogin = () => {
+    googleLogin().then((result) => setUser(result.user));
   };
   return (
     <>
@@ -49,7 +55,9 @@ function Login() {
               <button className="btn btn-primary">Login</button>
             </div>
             <div className="text-center space-x-5 mt-7">
-              <button className="btn  btn-primary">Google</button>
+              <button onClick={handelGoogleLogin} className="btn  btn-primary">
+                Google
+              </button>
               <button className="btn  btn-primary">Github</button>
             </div>
             <p className="text-xl text-center font-semibold mt-4">
