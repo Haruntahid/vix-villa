@@ -1,9 +1,22 @@
-function PopertyLists() {
+import PopertyCard from "./PopertyCard";
+import PropTypes from "prop-types";
+
+function PopertyLists({ estates }) {
+  console.log(estates);
   return (
     <>
-      <h2>PopertyLists</h2>
+      <h2 className="text-5xl text-center text-bold my-10">Poperty List</h2>
+      <div className="grid grid-cols-3 gap-5">
+        {estates.map((estate) => (
+          <PopertyCard estate={estate} key={estate.id} />
+        ))}
+      </div>
     </>
   );
 }
+
+PopertyLists.propTypes = {
+  estates: PropTypes.array,
+};
 
 export default PopertyLists;

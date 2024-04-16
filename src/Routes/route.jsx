@@ -6,6 +6,7 @@ import Login from "../Pages/Login";
 import UserProfile from "../Pages/UserProfile";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage";
+import ViewPopertyDetails from "../Pages/ViewPopertyDetails";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+        loader: () => fetch("popertylist.json"),
       },
       {
         path: "/register",
@@ -32,6 +34,11 @@ export const router = createBrowserRouter([
             <UserProfile />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/:id",
+        loader: () => fetch("popertylist.json"),
+        element: <ViewPopertyDetails />,
       },
     ],
   },
