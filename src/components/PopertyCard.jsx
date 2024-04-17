@@ -17,7 +17,10 @@ function PopertyCard({ estate }) {
   } = estate;
   return (
     <>
-      <div className="card p-6 border border-gray-300 bg-base-100 shadow-xl">
+      <div
+        data-aos="fade-up"
+        className="card p-6 border border-gray-300 bg-base-100 shadow-xl"
+      >
         <img
           className="rounded-2xl w-full h-[300px]"
           src={image_url}

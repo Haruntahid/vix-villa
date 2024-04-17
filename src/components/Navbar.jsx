@@ -59,9 +59,14 @@ function Navbar() {
               <NavLink to={"/register"}>Register</NavLink>
             </li>
             {user && (
-              <li>
-                <NavLink to={"/profile"}>Profile</NavLink>
-              </li>
+              <>
+                <li>
+                  <NavLink to={"/profile"}>Profile</NavLink>
+                </li>
+                <li>
+                  <NavLink to={"/update-profile"}>Update Profile</NavLink>
+                </li>
+              </>
             )}
           </ul>
         </div>

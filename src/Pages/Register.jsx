@@ -57,7 +57,7 @@ function Register() {
 
   return (
     <>
-      <div className="hero">
+      <div data-aos="fade-down" className="hero">
         <div className="shadow-2xl rounded-2xl bg-base-100 lg:w-[40%]">
           <form onSubmit={handelRegister} className="card-body">
             <div className="form-control">
