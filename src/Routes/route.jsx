@@ -56,7 +56,11 @@ export const router = createBrowserRouter([
       {
         path: "/:id",
         loader: () => fetch("popertylist.json"),
-        element: <ViewPopertyDetails />,
+        element: (
+          <PrivateRoute>
+            <ViewPopertyDetails />
+          </PrivateRoute>
+        ),
       },
     ],
   },

@@ -4,7 +4,7 @@ function Footer() {
   return (
     <>
       <div className="bg-base-200 p-10">
-        <footer className="flex flex-col lg:flex-row items-center justify-between text-center lg:text-left container mx-auto text-base-content gap-4">
+        <footer className="flex flex-col lg:flex-row lg:items-start justify-between text-center lg:text-left container mx-auto text-base-content gap-4">
           <aside>
             <p>
               <span className="text-2xl font-bold">Vix-Villa</span>

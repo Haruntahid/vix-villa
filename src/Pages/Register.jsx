@@ -1,19 +1,25 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import "animate.css";
 import { Helmet } from "react-helmet-async";
+import { getAuth, updateProfile } from "firebase/auth";
 
 function Register() {
-  const { registerUser, setUser } = useContext(AuthContext);
-  //   const [validPass, setValidPass] = useState();
+  const { registerUser, setUser, user } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [photo, setPhoto] = useState("");
 
+  const auth = getAuth();
+
+  // handel password toogle button
   const handelToogle = () => {
     setShowPassword(!showPassword);
   };
@@ -22,20 +28,29 @@ function Register() {
     setPassword(e.target.value);
   };
 
+  // update user
+  const updateUser = () => {
+    updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    })
+      .then(() => {
+        setUser({ ...user, name, photo });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const handelRegister = (e) => {
     e.preventDefault();
-    // console.log("submitted");
-    const name = e.target.name.value;
     const email = e.target.email.value;
-    const photo = e.target.photo.value;
     const password = e.target.password.value;
 
     if (!name || !email || !photo || !password) {
       toast.error("You must fill all the field");
       return;
     }
-
-    // update user
 
     // password validation
     if (password.length < 6) {
@@ -56,8 +71,9 @@ function Register() {
     registerUser(email, password)
       .then((result) => {
         setUser(result.user);
+        updateUser();
         e.target.reset();
-
+        navigate("/");
         toast.success("Registration Successfully!");
       })
       .catch((err) =>
@@ -91,6 +107,7 @@ function Register() {
                 placeholder="Name"
                 className="input input-bordered"
                 name="name"
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div className="form-control">
@@ -113,6 +130,7 @@ function Register() {
                 name="photo"
                 placeholder="Photo"
                 className="input input-bordered"
+                onChange={(e) => setPhoto(e.target.value)}
               />
             </div>
             <div className="form-control relative">

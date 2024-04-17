@@ -7,12 +7,12 @@ import HashLoader from "react-spinners/HashLoader";
 function PrivateRoute({ children }) {
   const { user, loading } = useContext(AuthContext);
   const location = useLocation();
-  console.log(location.pathname);
+  // console.log(location.pathname);
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center">
-        <HashLoader size={150} color="#36d7b7" />
+      <div className="flex justify-center items-center h-[80vh]">
+        <HashLoader size={300} color="#36d7b7" />
       </div>
     );
   }

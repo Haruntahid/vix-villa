@@ -1,14 +1,26 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
+import { getAuth, updateProfile } from "firebase/auth";
 
 function UpdateProfile() {
-  const { user } = useContext(AuthContext);
-  console.log(user);
-  // const [name, setName] = useState("");
-  // const [photoURL, setPhotoURL] = useState("");
+  const { user, setUser } = useContext(AuthContext);
+  const [name, setName] = useState("");
+  const [photoURL, setPhotoURL] = useState("");
+  const auth = getAuth();
+
   const HandelUpdate = (e) => {
     e.preventDefault();
+    updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photoURL,
+    })
+      .then(() => {
+        setUser({ ...user, name, photoURL });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -43,7 +55,7 @@ function UpdateProfile() {
 
       <div data-aos="fade-up" className="hero mt-10">
         <div className="shadow-2xl rounded-2xl bg-base-100 w-full lg:w-[40%]">
-          <form onSubmit={HandelUpdate} className="card-body">
+          <form className="card-body">
             <div className="divider divider-accent text-3xl my-6 text-center font-semibold">
               Update Profile
             </div>
@@ -58,6 +70,7 @@ function UpdateProfile() {
                   className="input input-bordered"
                   name="Name"
                   required
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className="form-control w-full">
@@ -70,11 +83,14 @@ function UpdateProfile() {
                   className="input input-bordered"
                   name="photoURL"
                   required
+                  onChange={(e) => setPhotoURL(e.target.value)}
                 />
               </div>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Update</button>
+              <button onClick={HandelUpdate} className="btn btn-primary">
+                Update
+              </button>
             </div>
           </form>
         </div>

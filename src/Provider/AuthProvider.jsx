@@ -46,14 +46,35 @@ function AuthProvider({ children }) {
     signInWithPopup(auth, githubProvider);
   };
 
+  const updateUser = () => {
+    return updateProfile(auth.currentUser)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  // update profile
+  // updateProfile(auth.currentUser, {
+  //   displayName: "Jane Q. User",
+  //   photoURL: "https://example.com/jane-q-user/profile.jpg",
+  // })
+  //   .then((result) => {
+  //     console.log(result);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+
   //   logout user
   const logOut = () => {
     return signOut(auth);
   };
 
-  const updateUser = () => {
-    return updateProfile(auth.currentUser);
-  };
+  // const updateUser = () => {
+  //   return updateProfile(auth.currentUser);
+  // };
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {

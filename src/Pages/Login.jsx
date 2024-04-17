@@ -5,6 +5,8 @@ import { toast } from "react-toastify";
 import { FaGithub } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
+import { FaRegEye } from "react-icons/fa6";
+import { FaRegEyeSlash } from "react-icons/fa6";
 
 function Login() {
   const [error, setError] = useState("");
@@ -14,11 +16,28 @@ function Login() {
     useContext(AuthContext);
   const navigate = useNavigate();
 
+  // passToogle
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handelToogle = () => {
+    setShowPassword(!showPassword);
+  };
+  const handleChange = (e) => {
+    setPassword(e.target.value);
+  };
+
   //   login
   const handelLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+
+    if (!email || !password) {
+      toast.error("You need to provide email and password");
+      return;
+    }
+
     loginUser(email, password)
       .then((result) => {
         console.log(result.user);
@@ -71,20 +90,32 @@ function Login() {
                 placeholder="email"
                 className="input input-bordered"
                 name="email"
-                required
               />
             </div>
-            <div className="form-control">
+            <div className="form-control relative">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={password}
                 placeholder="password"
                 className="input input-bordered"
-                name="password"
-                required
+                onChange={handleChange}
               />
+              {password && (
+                <span
+                  className="absolute top-[45%] right-[3%] "
+                  onClick={handelToogle}
+                >
+                  {showPassword ? (
+                    <FaRegEye size={20} />
+                  ) : (
+                    <FaRegEyeSlash size={20} />
+                  )}
+                </span>
+              )}
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
@@ -94,7 +125,7 @@ function Login() {
               {error && <p className="mt-2 text-rose-500">{error}</p>}
             </div>
             <div className="form-control">
-              <button className="btn btn-primary">Login</button>
+              <button className="btn btn-primary mt-6">Login</button>
             </div>
           </form>
           <div className="divider divider-secondary">Login with social</div>
