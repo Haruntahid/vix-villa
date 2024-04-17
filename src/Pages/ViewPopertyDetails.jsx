@@ -27,16 +27,16 @@ function ViewPopertyDetails() {
       </Helmet>
       <div
         data-aos="fade-down"
-        className="flex justify-between items-center gap-8"
+        className="flex flex-col lg:flex-row justify-between items-center gap-3 lg:gap-8"
       >
-        <div className="w-1/2">
+        <div className="lg:w-1/2 p-5">
           <img
             className="w-full rounded-3xl object-cover lg:min-h-[530px]"
             src={image_url}
             alt=""
           />
         </div>
-        <div className="w-1/2">
+        <div className="lg:w-1/2 p-5">
           <p className="font-medium text-xl">Poperty Name : {estate_title}</p>
           <div className="divider"></div>
           <p className="flex items-center gap-3 text-2xl font-bold">

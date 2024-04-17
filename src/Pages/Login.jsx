@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 import { FaGithub } from "react-icons/fa";
@@ -8,6 +8,8 @@ import { Helmet } from "react-helmet-async";
 
 function Login() {
   const [error, setError] = useState("");
+  const location = useLocation();
+  console.log(location);
   const { loginUser, googleLogin, setUser, githubLogin } =
     useContext(AuthContext);
   const navigate = useNavigate();
@@ -21,7 +23,8 @@ function Login() {
       .then((result) => {
         console.log(result.user);
         e.target.reset();
-        navigate("/");
+        // navigate after login
+        navigate(location?.state ? location.state : "/");
         toast.success("Log in successfully");
       })
       .catch((err) =>
@@ -38,13 +41,13 @@ function Login() {
   const handelGoogleLogin = () => {
     googleLogin().then((result) => {
       setUser(result.user);
-      navigate("/");
+      navigate(location?.state ? location.state : "/");
       toast.success("Log in successfully");
     });
   };
   const handelGithubLogin = () => {
     githubLogin();
-    navigate("/");
+    navigate(location?.state ? location.state : "/");
     toast.success("Log in successfully");
   };
   return (
@@ -53,7 +56,7 @@ function Login() {
         <title>vix-villa | login</title>
       </Helmet>
       <div data-aos="fade-down" className="hero">
-        <div className="shadow-2xl rounded-2xl bg-base-100 lg:w-[40%] card-body">
+        <div className="shadow-2xl rounded-2xl bg-base-100 w-full md:w-[60%] lg:w-[40%] card-body">
           <form onSubmit={handelLogin}>
             <h2 className="text-3xl font-bold text-center animate__animated animate__bounce text-rose-400">
               Login

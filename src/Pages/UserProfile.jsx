@@ -21,6 +21,9 @@ function UserProfile() {
           alt=""
           className="w-32 h-32 mx-auto rounded-full p-1 border-[3px] border-green-500"
         />
+        <div className="divider divider-accent mt-6">
+          Your Profile Information
+        </div>
         <div className="space-y-4 text-center divide-y divide-gray-700">
           <div className="my-2 space-y-1">
             <h2 className="text-xl font-semibold sm:text-2xl mt-5">

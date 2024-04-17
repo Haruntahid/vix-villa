@@ -30,7 +30,7 @@ function PopertyCard({ estate }) {
         <p className="flex items-center gap-3 text-2xl font-bold">
           <BsBuildingsFill size={20} /> {segment_name}
         </p>
-        <div className="flex gap-6 mt-5">
+        <div className="flex flex-col lg:flex-row gap-6 mt-5">
           <small className="flex items-center gap-2 px-3 py-1 rounded-full bg-blue-300">
             <FaLocationDot /> {location}
           </small>

@@ -76,7 +76,7 @@ function Register() {
         <title>vix-villa | registration</title>
       </Helmet>
       <div data-aos="fade-down" className="hero">
-        <div className="shadow-2xl rounded-2xl bg-base-100 lg:w-[40%]">
+        <div className="shadow-2xl rounded-2xl bg-base-100 w-full sm:w-[60%] lg:w-[40%]">
           <form onSubmit={handelRegister} className="card-body">
             <h2 className="text-3xl font-bold text-center animate__animated animate__bounce text-rose-400">
               Registration
@@ -102,7 +102,6 @@ function Register() {
                 placeholder="email"
                 className="input input-bordered"
                 name="email"
-                required
               />
             </div>
             <div className="form-control">
@@ -126,7 +125,6 @@ function Register() {
                 value={password}
                 placeholder="password"
                 className="input input-bordered"
-                required
                 onChange={handleChange}
               />
               {password && (

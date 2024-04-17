@@ -38,11 +38,16 @@ function UpdateProfile() {
           </div>
         </div>
       </div>
-      <p className="text-3xl my-6 text-center font-semibold">Update Profile</p>
+
+      {/* update section */}
+
       <div data-aos="fade-up" className="hero mt-10">
-        <div className="shadow-2xl rounded-2xl bg-base-100  max-w-xl lg:w-[40%]">
+        <div className="shadow-2xl rounded-2xl bg-base-100 w-full lg:w-[40%]">
           <form onSubmit={HandelUpdate} className="card-body">
-            <div className="flex justify-between gap-6">
+            <div className="divider divider-accent text-3xl my-6 text-center font-semibold">
+              Update Profile
+            </div>
+            <div className="flex flex-col lg:flex-row justify-between gap-6">
               <div className="form-control w-full">
                 <label className="label">
                   <span className="label-text">Name</span>

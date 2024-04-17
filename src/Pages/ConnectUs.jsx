@@ -14,9 +14,11 @@ function ConnectUs() {
         <title>vix-villa | connect-us</title>
       </Helmet>
       <div data-aos="fade-down">
-        <div className="flex justify-between items-center">
-          <div className="w-1/3">
-            <h2 className="text-6xl font-bold text-black">Connect with us</h2>
+        <div className="flex flex-col-reverse lg:flex-row justify-between items-center p-4">
+          <div className="lg:w-1/3">
+            <h2 className="text-4xl text-center lg:text-left lg:text-6xl mt-5 font-bold text-black">
+              Connect with us
+            </h2>
             <p className="text-gray-600 mt-5">
               We are thrilled to connect with you! Whether you have inquiries
               about our properties, want to schedule a viewing, or simply want
@@ -24,7 +26,7 @@ function ConnectUs() {
               the way. There are several ways to get in touch with us
             </p>
           </div>
-          <div className="w-2/3">
+          <div className="lg:w-2/3">
             <img
               src="https://i.ibb.co/RHcNv6B/undraw-Contact-us-re-4qqt.png'"
               alt=""

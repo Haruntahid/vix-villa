@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD_nvO0awtpOarWLfCvBHdpQO1q1eMqKMY",
-  authDomain: "vix-villa.firebaseapp.com",
-  projectId: "vix-villa",
-  storageBucket: "vix-villa.appspot.com",
-  messagingSenderId: "423641115194",
-  appId: "1:423641115194:web:227e81f9a2f480efb06303",
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase
