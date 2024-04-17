@@ -4,6 +4,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { toast } from "react-toastify";
 import { FaGithub } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 function Login() {
   const [error, setError] = useState("");
@@ -48,6 +49,9 @@ function Login() {
   };
   return (
     <>
+      <Helmet>
+        <title>vix-villa | login</title>
+      </Helmet>
       <div data-aos="fade-down" className="hero">
         <div className="shadow-2xl rounded-2xl bg-base-100 lg:w-[40%] card-body">
           <form onSubmit={handelLogin}>

@@ -1,6 +1,7 @@
 // import { getAuth } from "firebase/auth";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 function UserProfile() {
   const { user } = useContext(AuthContext);
@@ -8,6 +9,9 @@ function UserProfile() {
   // console.log(user);
   return (
     <>
+      <Helmet>
+        <title>vix-villa | profile</title>
+      </Helmet>
       <div
         data-aos="fade-down"
         className="flex flex-col justify-center max-w-xl mx-auto p-6 shadow-md rounded-xl sm:px-12 bg-gray-900 text-gray-100"

@@ -5,6 +5,7 @@ import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import "animate.css";
+import { Helmet } from "react-helmet-async";
 
 function Register() {
   const { registerUser, setUser } = useContext(AuthContext);
@@ -71,6 +72,9 @@ function Register() {
 
   return (
     <>
+      <Helmet>
+        <title>vix-villa | registration</title>
+      </Helmet>
       <div data-aos="fade-down" className="hero">
         <div className="shadow-2xl rounded-2xl bg-base-100 lg:w-[40%]">
           <form onSubmit={handelRegister} className="card-body">

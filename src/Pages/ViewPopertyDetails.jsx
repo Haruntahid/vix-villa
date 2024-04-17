@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { BsBuildingsFill } from "react-icons/bs";
+import { Helmet } from "react-helmet-async";
 
 function ViewPopertyDetails() {
   const { id } = useParams();
@@ -21,6 +22,9 @@ function ViewPopertyDetails() {
   } = estate;
   return (
     <>
+      <Helmet>
+        <title>vix-villa | {estate_title}</title>
+      </Helmet>
       <div
         data-aos="fade-down"
         className="flex justify-between items-center gap-8"
