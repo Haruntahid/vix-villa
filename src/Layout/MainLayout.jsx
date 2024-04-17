@@ -13,7 +13,7 @@ function MainLayout() {
   }, []);
   return (
     <>
-      <div className="container mx-auto">
+      <div className="container mx-auto min-h-[70vh]">
         <Navbar />
         <Outlet />
       </div>

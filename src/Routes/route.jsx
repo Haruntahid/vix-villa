@@ -8,6 +8,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage";
 import ViewPopertyDetails from "../Pages/ViewPopertyDetails";
 import UpdateProfile from "../Pages/UpdateProfile";
+import ConnectUs from "../Pages/ConnectUs";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <UpdateProfile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/connect",
+        element: (
+          <PrivateRoute>
+            <ConnectUs />
           </PrivateRoute>
         ),
       },

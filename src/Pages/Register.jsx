@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { FaRegEye } from "react-icons/fa6";
 import { FaRegEyeSlash } from "react-icons/fa6";
+import { toast } from "react-toastify";
+import "animate.css";
 
 function Register() {
   const { registerUser, setUser } = useContext(AuthContext);
@@ -27,6 +29,13 @@ function Register() {
     const photo = e.target.photo.value;
     const password = e.target.password.value;
 
+    if (!name || !email || !photo || !password) {
+      toast.error("You must fill all the field");
+      return;
+    }
+
+    // update user
+
     // password validation
     if (password.length < 6) {
       setError("password must be 6 characters");
@@ -44,7 +53,12 @@ function Register() {
     setError("");
     // register a user
     registerUser(email, password)
-      .then((result) => setUser(result.user))
+      .then((result) => {
+        setUser(result.user);
+        e.target.reset();
+
+        toast.success("Registration Successfully!");
+      })
       .catch((err) =>
         setError(
           err.message.replace(
@@ -60,6 +74,10 @@ function Register() {
       <div data-aos="fade-down" className="hero">
         <div className="shadow-2xl rounded-2xl bg-base-100 lg:w-[40%]">
           <form onSubmit={handelRegister} className="card-body">
+            <h2 className="text-3xl font-bold text-center animate__animated animate__bounce text-rose-400">
+              Registration
+            </h2>
+            <div className="divider"></div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -69,7 +87,6 @@ function Register() {
                 placeholder="Name"
                 className="input input-bordered"
                 name="name"
-                required
               />
             </div>
             <div className="form-control">
@@ -93,7 +110,6 @@ function Register() {
                 name="photo"
                 placeholder="Photo"
                 className="input input-bordered"
-                required
               />
             </div>
             <div className="form-control relative">
@@ -109,21 +125,23 @@ function Register() {
                 required
                 onChange={handleChange}
               />
+              {password && (
+                <span
+                  className="absolute top-[60%] right-[3%] "
+                  onClick={handelToogle}
+                >
+                  {showPassword ? (
+                    <FaRegEye size={20} />
+                  ) : (
+                    <FaRegEyeSlash size={20} />
+                  )}
+                </span>
+              )}
             </div>
-            {password && (
-              <span
-                className="absolute top-[60%] right-4 "
-                onClick={handelToogle}
-              >
-                {showPassword ? (
-                  <FaRegEye size={20} />
-                ) : (
-                  <FaRegEyeSlash size={20} />
-                )}
-              </span>
-            )}
 
-            {error && <span className="text-rose-600 mt-4">{error}</span>}
+            <div>
+              {error && <span className="text-rose-600 mt-4">{error}</span>}
+            </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Register</button>
             </div>

@@ -7,6 +7,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   GithubAuthProvider,
+  updateProfile,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
@@ -50,6 +51,10 @@ function AuthProvider({ children }) {
     return signOut(auth);
   };
 
+  const updateUser = () => {
+    return updateProfile(auth.currentUser);
+  };
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log("user in the auth state change", currentUser);
@@ -68,6 +73,7 @@ function AuthProvider({ children }) {
     googleLogin,
     githubLogin,
     loading,
+    updateUser,
   };
   return (
     <>

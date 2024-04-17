@@ -4,7 +4,6 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 function Navbar() {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
 
   const handelLogout = () => {
     logOut();
@@ -35,15 +34,24 @@ function Navbar() {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a>Home</a>
+                <NavLink to={"/"}>Home</NavLink>
               </li>
               <li>
-                <a>Register</a>
+                <NavLink to={"/register"}>Register</NavLink>
               </li>
-
               <li>
-                <a>Login</a>
+                <NavLink to={"/connect"}>Connect us</NavLink>
               </li>
+              {user && (
+                <>
+                  <li>
+                    <NavLink to={"/profile"}>Profile</NavLink>
+                  </li>
+                  <li>
+                    <NavLink to={"/update-profile"}>Update Profile</NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
           <Link to={"/"} className="btn btn-ghost text-3xl">
@@ -57,6 +65,9 @@ function Navbar() {
             </li>
             <li>
               <NavLink to={"/register"}>Register</NavLink>
+            </li>
+            <li>
+              <NavLink to={"/connect"}>Connect us</NavLink>
             </li>
             {user && (
               <>
