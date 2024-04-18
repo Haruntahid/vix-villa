@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 
 function UserProfile() {
   const { user } = useContext(AuthContext);
+  // console.log(user.photoURL);
 
   // console.log(user);
   return (

@@ -4,6 +4,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 function Navbar() {
   const { user, logOut } = useContext(AuthContext);
+  console.log(user?.displayName);
 
   const handelLogout = () => {
     logOut();
@@ -90,11 +91,11 @@ function Navbar() {
               <div className="mr-5">
                 <div
                   className="tooltip tooltip-bottom"
-                  data-tip={user.displayName}
+                  data-tip={user?.displayName}
                 >
                   <img
                     className="w-14 h-14 rounded-full"
-                    src={user.photoURL}
+                    src={user?.photoURL}
                     alt=""
                   />
                 </div>

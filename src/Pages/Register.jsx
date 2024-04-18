@@ -29,18 +29,18 @@ function Register() {
   };
 
   // update user
-  const updateUser = () => {
-    updateProfile(auth.currentUser, {
-      displayName: name,
-      photoURL: photo,
-    })
-      .then(() => {
-        setUser({ ...user, name, photo });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  // const updateUser = () => {
+  //   updateProfile(auth.currentUser, {
+  //     displayName: name,
+  //     photoURL: photo,
+  //   })
+  //     .then(() => {
+  //       setUser({ ...user, name, photo });
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
   const handelRegister = (e) => {
     e.preventDefault();
@@ -69,12 +69,22 @@ function Register() {
     setError("");
     // register a user
     registerUser(email, password)
-      .then((result) => {
-        setUser(result.user);
-        updateUser();
-        e.target.reset();
-        navigate("/");
-        toast.success("Registration Successfully!");
+      .then(() => {
+        // update  user
+        updateProfile(auth.currentUser, {
+          displayName: name,
+          photoURL: photo,
+        })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photo });
+            e.target.reset();
+            navigate("/");
+            toast.success("Registration Successfully!");
+          })
+          .catch((error) => {
+            console.error("Error updating user profile:", error);
+            toast.error("Failed to update user profile");
+          });
       })
       .catch((err) =>
         setError(
