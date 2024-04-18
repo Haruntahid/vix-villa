@@ -1,6 +1,6 @@
-# Vix Villa - Your Gateway to Prime Real Estate Investments
+# Vix Villa
 
-[Live Site](https://vix-villa.web.app/)
+[Live Site](https://vix-villa.web.app/) - https://vix-villa.web.app/
 
 Welcome to Vix Villa, your premier destination for lucrative real estate investments! Whether you're seeking to buy, sell, or rent properties, we offer unparalleled opportunities to maximize your returns and find your dream property.
 

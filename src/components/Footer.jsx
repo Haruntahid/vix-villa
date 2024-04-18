@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <>
-      <div className="bg-base-200 p-10">
-        <footer className="flex flex-col lg:flex-row lg:items-start justify-between text-center lg:text-left container mx-auto text-base-content gap-4">
+      <div className="bg-black px-5 lg:px-10 py-10 lg:py-20">
+        <footer className="flex flex-col lg:flex-row lg:items-start justify-between text-center lg:text-left container mx-auto text-gray-300 gap-4">
           <aside>
             <p>
               <span className="text-2xl font-bold">Vix-Villa</span>

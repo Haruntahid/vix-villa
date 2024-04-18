@@ -1,7 +1,10 @@
 function Testimonial() {
   return (
     <>
-      <section className="my-8 bg-gray-800 text-gray-100 mt-10 lg:mt-24">
+      <section
+        data-aos="fade-down"
+        className="my-8 bg-gray-800 text-gray-100 mt-10 lg:mt-24 "
+      >
         <div className="container flex flex-col items-center p-4 mx-auto space-y-6 md:p-8">
           <svg
             xmlns="http://www.w3.org/2000/svg"
